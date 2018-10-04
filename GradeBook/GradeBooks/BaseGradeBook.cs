@@ -116,6 +116,8 @@ namespace GradeBook.GradeBooks
                     return 2;
                 case 'D':
                     return 1;
+                case 'F':
+                    return 0;
             }
             return 0;
         }
