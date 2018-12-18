@@ -10,7 +10,8 @@ namespace GradeBook.UserInterfaces
         {
             while (!Quit)
             {
-                Console.WriteLine("What would you like to do?");
+                Console.WriteLine(string.Empty);
+                Console.WriteLine(">> What would you like to do?");
                 var command = Console.ReadLine().ToLower();
                 CommandRoute(command);
             }
@@ -63,6 +64,7 @@ namespace GradeBook.UserInterfaces
 
         public static void HelpCommand()
         {
+            Console.WriteLine();
             Console.WriteLine("GradeBook accepts the following commands:");
             Console.WriteLine();
             Console.WriteLine("Create 'Name' - Creates a new gradebook where 'Name' is the name of the gradebook.");
