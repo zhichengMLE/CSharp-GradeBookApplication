@@ -82,11 +82,11 @@ namespace GradeBookTests
                 rgx = new Regex(pattern);
                 matches = rgx.Matches(input);
 
-                Assert.True(matches.Count == 0, "`RankedGradeBook.GetLetterGrade` is either not overiding `BaseGradeBook.GetLetterGrade` or is using `base.GetLetterGrade` within the override. If a higher grade isn't assigned `RankedGradeBook.GetLetterGrade` should return 'F'.");
+                Assert.True(matches.Count == 0, "`RankedGradeBook.GetLetterGrade` is either not overriding `BaseGradeBook.GetLetterGrade` or is using `base.GetLetterGrade` within the override. If a higher grade isn't assigned `RankedGradeBook.GetLetterGrade` should return 'F'.");
             }
             else
             {
-                Assert.True(false, "`RankedGradeBook.GetLetterGrade` is either not overiding `BaseGradeBook.GetLetterGrade` or is using `base.GetLetterGrade` within the override.");
+                Assert.True(false, "`RankedGradeBook.GetLetterGrade` is either not overriding `BaseGradeBook.GetLetterGrade` or is using `base.GetLetterGrade` within the override.");
             }
         }
 
@@ -156,11 +156,11 @@ namespace GradeBookTests
                 rgx = new Regex(pattern);
                 matches = rgx.Matches(input);
 
-                Assert.True(matches.Count == 0, "`RankedGradeBook.GetLetterGrade` is either not overiding `BaseGradeBook.GetLetterGrade` or is using `base.GetLetterGrade` within the override. If a higher grade isn't assigned `RankedGradeBook.GetLetterGrade` should return 'F'.");
+                Assert.True(matches.Count == 0, "`RankedGradeBook.GetLetterGrade` is either not overriding `BaseGradeBook.GetLetterGrade` or is using `base.GetLetterGrade` within the override. If a higher grade isn't assigned `RankedGradeBook.GetLetterGrade` should return 'F'.");
             }
             else
             {
-                Assert.True(false, "`RankedGradeBook.GetLetterGrade` is either not overiding `BaseGradeBook.GetLetterGrade` or is using `base.GetLetterGrade` within the override.");
+                Assert.True(false, "`RankedGradeBook.GetLetterGrade` is either not overriding `BaseGradeBook.GetLetterGrade` or is using `base.GetLetterGrade` within the override.");
             }
         }
 
