@@ -47,7 +47,7 @@ namespace GradeBookTests
                     Assert.True(output.Contains("5 students") || output.Contains("five students"), "`GradeBook.GradeBooks.RankedGradeBook.CalculateStatistics` didn't respond with 'Ranked grading requires at least 5 students.' when there were less than 5 students.");
 
                     //Test that the base calculate statistics didn't still run when there were less than 5 students.
-                    Assert.True(!output.Contains("average grade of all students is"), "`GradeBook.GradeBooks.RankedGradeBook.CalculateStastics` still ran the base `CalculateStatistics` when there was less than 5 students.");
+                    Assert.True(!output.Contains("average grade of all students is"), "`GradeBook.GradeBooks.RankedGradeBook.CalculateStatistics` still ran the base `CalculateStatistics` when there was less than 5 students.");
                 }
             }
             finally
@@ -94,7 +94,7 @@ namespace GradeBookTests
                     method.Invoke(gradeBook, null);
                     output = consolestream.ToString().ToLower();
 
-                    Assert.True(output.Contains("average grade of all students is"), "`GradeBook.GradeBooks.RankedGradeBook.CalculateStastics` did not run the base `CalculateStatistics` when there was 5 or more students.");
+                    Assert.True(output.Contains("average grade of all students is"), "`GradeBook.GradeBooks.RankedGradeBook.CalculateStatistics` did not run the base `CalculateStatistics` when there was 5 or more students.");
                 }
             }
             finally
@@ -154,7 +154,7 @@ namespace GradeBookTests
                     Assert.True(output.Contains("5 students") || output.Contains("five students"), "`GradeBook.GradeBooks.RankedGradeBook.CalculateStudentStatistics` didn't respond with 'Ranked grading requires at least 5 students.' when there were less than 5 students.");
 
                     //Test that the base calculate statistics didn't still run when there were less than 5 students.
-                    Assert.True(!output.Contains("grades:"), "`GradeBook.GradeBooks.RankedGradeBook.CalculateStudentStastics` still ran the base `CalculateStudentStatistics` when there was less than 5 students.");
+                    Assert.True(!output.Contains("grades:"), "`GradeBook.GradeBooks.RankedGradeBook.CalculateStudentStatistics` still ran the base `CalculateStudentStatistics` when there was less than 5 students.");
                 }
             }
             finally
@@ -201,7 +201,7 @@ namespace GradeBookTests
                     method.Invoke(gradeBook, new object[] { "jamie" });
                     output = consolestream.ToString().ToLower();
 
-                    Assert.True(output.Contains("grades:"), "`GradeBook.GradeBooks.RankedGradeBook.CalculateStudentStastics` did not run the base `CalculateStudentStatistics` when there was 5 or more students.");
+                    Assert.True(output.Contains("grades:"), "`GradeBook.GradeBooks.RankedGradeBook.CalculateStudentStatistics` did not run the base `CalculateStudentStatistics` when there was 5 or more students.");
                 }
             }
             finally

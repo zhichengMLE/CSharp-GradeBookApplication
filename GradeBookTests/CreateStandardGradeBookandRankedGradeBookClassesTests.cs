@@ -10,7 +10,7 @@ namespace GradeBookTests
     /// <summary>
     ///     This class contains all tests related to the "Create StandardGradeBook and RankedGradeBook Classes" task.
     ///     Note: Do not use these tests as example of good testing practices, due to the nature of how Pluralsight projects work
-    ///     we have to create tests against code that doesn't exist and changes implimentation, due to this tests are fragile,
+    ///     we have to create tests against code that doesn't exist and changes implementation, due to this tests are fragile,
     ///     hard to maintain, and don't don't adhere to the "test just one thing" practice commonly used in production tests.
     /// </summary>
     public class CreateStandardGradeBookandRankedGradeBookClassesTests
@@ -19,7 +19,7 @@ namespace GradeBookTests
         ///     All Tests related to the "Create the StandardGradeBook Class" task.
         /// </summary>
         [Fact(DisplayName = "Create the StandardGradeBook Class @create-the-standardgradebook-class")]
-        public void StardardGradeBookExistsTest()
+        public void StandardGradeBookExistsTest()
         {
             // Get appropriate path to file for the current operating system
             var filePath = ".." + Path.DirectorySeparatorChar + ".." + Path.DirectorySeparatorChar + ".." + Path.DirectorySeparatorChar + ".." + Path.DirectorySeparatorChar + "GradeBook" + Path.DirectorySeparatorChar + "GradeBooks" + Path.DirectorySeparatorChar + "StandardGradeBook.cs";
@@ -58,7 +58,7 @@ namespace GradeBookTests
             var constructor = gradebook.GetConstructors().FirstOrDefault();
 
             // Assert a constructor was found
-            Assert.True(constructor != null, "No constructor found for GradeBook.GradeBooks.StardardGradeBook.");
+            Assert.True(constructor != null, "No constructor found for GradeBook.GradeBooks.StandardGradeBook.");
 
             // Get GradeBookType from the GradeBook.Enums namespace
             var gradebookEnum = (from assembly in AppDomain.CurrentDomain.GetAssemblies()
@@ -74,7 +74,7 @@ namespace GradeBookTests
             if (parameters.Count() == 1 && parameters[0].ParameterType == typeof(string))
                 standardGradeBook = Activator.CreateInstance(gradebook, "LoadTest");
 
-            // GUARD CODE - Without this code this test will fail once the project is refactored to accomidate weighted grading DO NOT REMOVE!!!
+            // GUARD CODE - Without this code this test will fail once the project is refactored to accommodate weighted grading DO NOT REMOVE!!!
             else if (parameters.Count() == 2 && parameters[0].ParameterType == typeof(string) && parameters[1].ParameterType == typeof(bool))
                 standardGradeBook = Activator.CreateInstance(gradebook, "LoadTest", true);
             // END GUARD CODE
@@ -152,7 +152,7 @@ namespace GradeBookTests
             if (parameters.Count() == 1 && parameters[0].ParameterType == typeof(string))
                 rankedGradeBook = Activator.CreateInstance(gradebook, "LoadTest");
 
-            // GUARD CODE - Without this code this test will fail once the project is refactored to accomidate weighted grading DO NOT REMOVE!!!
+            // GUARD CODE - Without this code this test will fail once the project is refactored to accommodate weighted grading DO NOT REMOVE!!!
             else if (parameters.Count() == 2 && parameters[0].ParameterType == typeof(string) && parameters[1].ParameterType == typeof(bool))
                 rankedGradeBook = Activator.CreateInstance(gradebook, "LoadTest", true);
             // END GUARD CODE
