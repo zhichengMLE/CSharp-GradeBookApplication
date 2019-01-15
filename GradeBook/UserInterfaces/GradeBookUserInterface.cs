@@ -16,11 +16,11 @@ namespace GradeBook.UserInterfaces
             Console.WriteLine("#=======================#");
             Console.WriteLine(GradeBook.Name + " : " + GradeBook.GetType().Name);
             Console.WriteLine("#=======================#");
-            Console.WriteLine(string.Empty);
 
             while(!Quit)
             {
-                Console.WriteLine("What would you like to do?");
+                Console.WriteLine(string.Empty);
+                Console.WriteLine(">> What would you like to do?");
                 var command = Console.ReadLine().ToLower();
                 CommandRoute(command);
             }
@@ -154,6 +154,7 @@ namespace GradeBook.UserInterfaces
 
         public static void HelpCommand()
         {
+            Console.WriteLine();
             Console.WriteLine("While a gradebook is open you can use the following commands:");
             Console.WriteLine();
             Console.WriteLine("Add 'Name' 'Student Type' 'Enrollment Type' - Adds a new student to the gradebook with the provided name, type of student, and type of enrollment.");
