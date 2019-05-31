@@ -1,4 +1,4 @@
-﻿namespace GradeBook.GradeBooks
+namespace GradeBook.GradeBooks
 {
     public class StandardGradeBook : BaseGradeBook
     {
