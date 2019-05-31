@@ -19,10 +19,8 @@ namespace GradeBookTests
         public void CreateGetLetterGradeOverrideTests()
         {
             // Setup Test
-            var rankedGradeBook = (from assembly in AppDomain.CurrentDomain.GetAssemblies()
-                                   from type in assembly.GetTypes()
-                                   where type.Name == "RankedGradeBook"
-                                   select type).FirstOrDefault();
+            var rankedGradeBook = TestHelpers.GetUserType("GradeBook.GradeBooks.RankedGradeBook");
+            Assert.True(rankedGradeBook != null, "`RankedGradeBook` wasn't found in the `GradeBooks.GradeBook` namespace.");
 
             var constructor = rankedGradeBook.GetConstructors().FirstOrDefault();
             var parameters = constructor.GetParameters();
@@ -97,10 +95,8 @@ namespace GradeBookTests
         public void TopTwentyPercentGetAnATests()
         {
             // Setup Test
-            var rankedGradeBook = (from assembly in AppDomain.CurrentDomain.GetAssemblies()
-                                   from type in assembly.GetTypes()
-                                   where type.Name == "RankedGradeBook"
-                                   select type).FirstOrDefault();
+            var rankedGradeBook = TestHelpers.GetUserType("GradeBook.GradeBooks.RankedGradeBook");
+            Assert.True(rankedGradeBook != null, "`RankedGradeBook` wasn't found in the `GradeBooks.GradeBook` namespace.");
 
             var constructor = rankedGradeBook.GetConstructors().FirstOrDefault();
             var parameters = constructor.GetParameters();
@@ -171,10 +167,8 @@ namespace GradeBookTests
         public void SecondTwentyPercentGetABTests()
         {
             // Setup Test
-            var rankedGradeBook = (from assembly in AppDomain.CurrentDomain.GetAssemblies()
-                                   from type in assembly.GetTypes()
-                                   where type.Name == "RankedGradeBook"
-                                   select type).FirstOrDefault();
+            var rankedGradeBook = TestHelpers.GetUserType("GradeBook.GradeBooks.RankedGradeBook");
+            Assert.True(rankedGradeBook != null, "`RankedGradeBook` wasn't found in the `GradeBooks.GradeBook` namespace.");
 
             var constructor = rankedGradeBook.GetConstructors().FirstOrDefault();
             var parameters = constructor.GetParameters();
@@ -224,10 +218,8 @@ namespace GradeBookTests
         public void ThirdTwentyPercentGetACTests()
         {
             // Setup Test
-            var rankedGradeBook = (from assembly in AppDomain.CurrentDomain.GetAssemblies()
-                                   from type in assembly.GetTypes()
-                                   where type.Name == "RankedGradeBook"
-                                   select type).FirstOrDefault();
+            var rankedGradeBook = TestHelpers.GetUserType("GradeBook.GradeBooks.RankedGradeBook");
+            Assert.True(rankedGradeBook != null, "`RankedGradeBook` wasn't found in the `GradeBooks.GradeBook` namespace.");
 
             var constructor = rankedGradeBook.GetConstructors().FirstOrDefault();
             var parameters = constructor.GetParameters();
@@ -277,10 +269,8 @@ namespace GradeBookTests
         public void FourthTwentyPercentGetADTests()
         {
             // Setup Test
-            var rankedGradeBook = (from assembly in AppDomain.CurrentDomain.GetAssemblies()
-                                   from type in assembly.GetTypes()
-                                   where type.Name == "RankedGradeBook"
-                                   select type).FirstOrDefault();
+            var rankedGradeBook = TestHelpers.GetUserType("GradeBook.GradeBooks.RankedGradeBook");
+            Assert.True(rankedGradeBook != null, "`RankedGradeBook` wasn't found in the `GradeBooks.GradeBook` namespace.");
 
             var constructor = rankedGradeBook.GetConstructors().FirstOrDefault();
             var parameters = constructor.GetParameters();
