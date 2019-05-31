@@ -9,27 +9,24 @@ namespace GradeBookTests
 {
     public class UpdateGPACalculationsToSupportWeightedGPATests
     {
-        // <summary>
+        /// <summary>
         ///     All Tests related to the "Update BaseGradeBooks GetGPA Method" Task.
         ///</summary>
         [Fact(DisplayName = "Update BaseGradeBooks GetGPA Method Test @update-basegradebook-s-getgpa-method")]
         public void GetWeightedGPATest()
         {
-            var standardGradeBook = (from assembly in AppDomain.CurrentDomain.GetAssemblies()
-                                     from type in assembly.GetTypes()
-                                     where type.Name == "StandardGradeBook"
-                                     select type).FirstOrDefault();
+            var standardGradeBook = TestHelpers.GetUserType("GradeBook.GradeBooks.StandardGradeBook");
             Assert.True(standardGradeBook != null, "`GradeBook.GradeBooks.StandardGradeBook` doesn't exist.");
 
             // Test if `StandardGradeBook` is `public`.
             Assert.True(standardGradeBook.IsPublic, "`GradeBook.GradeBooks.StandardGradeBook` isn't public");
 
-            // Test if `StandardGradeBook` is inheritting `BaseGradeBook`.
+            // Test if `StandardGradeBook` is inheriting `BaseGradeBook`.
             Assert.True(standardGradeBook.BaseType == typeof(BaseGradeBook), "`GradeBook.GradeBooks.StandardGradeBook` doesn't inherit `BaseGradeBook`");
 
             // Test if `StandardGradeBook`'s constructor has the proper signature (consider both this task and later signature)
             var ctor = standardGradeBook.GetConstructors().FirstOrDefault();
-            Assert.True(ctor != null, "No constructor found for GradeBook.GradeBooks.StardardGradeBook.");
+            Assert.True(ctor != null, "No constructor found for GradeBook.GradeBooks.StandardGradeBook.");
 
             var parameters = ctor.GetParameters();
             object gradeBook = null;

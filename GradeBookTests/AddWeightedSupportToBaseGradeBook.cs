@@ -26,10 +26,8 @@ namespace GradeBookTests
         public void RefactorGradeBooksAndStartingUserInterface()
         {
             // Get the StandardGradeBook type
-            var standardGradeBook = (from assembly in AppDomain.CurrentDomain.GetAssemblies()
-                                     from type in assembly.GetTypes()
-                                     where type.Name == "StandardGradeBook"
-                                     select type).FirstOrDefault();
+            var standardGradeBook = TestHelpers.GetUserType("GradeBook.GradeBooks.StandardGradeBook");
+            Assert.True(standardGradeBook != null, "`StandardGradeBook` wasn't found in the `GradeBooks.GradeBook` namespace.");
 
             // Get the StandardGradeBook's constructor
             var constructor = standardGradeBook.GetConstructors().FirstOrDefault();
@@ -51,27 +49,24 @@ namespace GradeBookTests
         public void SetIsWeightedInBaseGradeBookConstructorTest()
         {
             // get standardgradebook type
-            var standardGradeBook = (from assembly in AppDomain.CurrentDomain.GetAssemblies()
-                                     from type in assembly.GetTypes()
-                                     where type.Name == "StandardGradeBook"
-                                     select type).FirstOrDefault();
+            var standardGradeBook = TestHelpers.GetUserType("GradeBook.GradeBooks.StandardGradeBook");
+            Assert.True(standardGradeBook != null, "`StandardGradeBook` wasn't found in the `GradeBooks.GradeBook` namespace.");
 
             // Instantiate StandardGradeBook with weighted grading
             object gradeBook = Activator.CreateInstance(standardGradeBook, "WeightedTest", true);
 
             // Assert that is weighted is true
-            Assert.True(gradeBook.GetType().GetProperty("IsWeighted").GetValue(gradeBook).ToString().ToLower() == "true", "`GradeBook.GradeBooks.BaseGradeBook`'s constructor didn't propertly set the `IsWeighted` property based on the provided bool parameter");
+            Assert.True(gradeBook.GetType().GetProperty("IsWeighted").GetValue(gradeBook).ToString().ToLower() == "true", "`GradeBook.GradeBooks.BaseGradeBook`'s constructor didn't properly set the `IsWeighted` property based on the provided bool parameter");
         }
 
         /// <summary>
         ///     All Tests related to the "Update StartingUserInterface CreateCommand Method's Condition"
         /// </summary>
         [Fact(DisplayName = "Update StartingUserInterface CreateCommand Methods Condition @add-weighted-to-createcommand")]
-        public void UpdateStartingUserInterefacesCreateCommandMethodsCondition()
+        public void UpdateStartingUserInterfacesCreateCommandMethodsCondition()
         {
             //Setup Test
             var output = string.Empty;
-            Console.Clear();
 
             try
             {
@@ -104,7 +99,7 @@ namespace GradeBookTests
             }
 
             output = string.Empty;
-            Console.Clear();
+
             try
             {
                 using (var consoleInputStream = new StringReader("close"))

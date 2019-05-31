@@ -18,10 +18,8 @@ namespace GradeBookTests
         public void OverrideCalculateStatisticsTest()
         {
             //Setup Test
-            var rankedGradeBook = (from assembly in AppDomain.CurrentDomain.GetAssemblies()
-                                   from type in assembly.GetTypes()
-                                   where type.FullName == "GradeBook.GradeBooks.RankedGradeBook"
-                                   select type).FirstOrDefault();
+            var rankedGradeBook = TestHelpers.GetUserType("GradeBook.GradeBooks.RankedGradeBook");
+            Assert.True(rankedGradeBook != null, "`RankedGradeBook` wasn't found in the `GradeBooks.GradeBook` namespace.");
 
             var ctor = rankedGradeBook.GetConstructors().FirstOrDefault();
 
@@ -34,7 +32,7 @@ namespace GradeBookTests
 
             MethodInfo method = rankedGradeBook.GetMethod("CalculateStatistics");
             var output = string.Empty;
-            Console.Clear();
+
             try
             {
                 //Test that message was written to console when there are less than 5 students.
@@ -47,7 +45,7 @@ namespace GradeBookTests
                     Assert.True(output.Contains("5 students") || output.Contains("five students"), "`GradeBook.GradeBooks.RankedGradeBook.CalculateStatistics` didn't respond with 'Ranked grading requires at least 5 students.' when there were less than 5 students.");
 
                     //Test that the base calculate statistics didn't still run when there were less than 5 students.
-                    Assert.True(!output.Contains("average grade of all students is"), "`GradeBook.GradeBooks.RankedGradeBook.CalculateStastics` still ran the base `CalculateStatistics` when there was less than 5 students.");
+                    Assert.True(!output.Contains("average grade of all students is"), "`GradeBook.GradeBooks.RankedGradeBook.CalculateStatistics` still ran the base `CalculateStatistics` when there was less than 5 students.");
                 }
             }
             finally
@@ -84,7 +82,6 @@ namespace GradeBookTests
 
             //Test that the base calculate statistics did run when there were 5 or more students.
             output = string.Empty;
-            Console.Clear();
 
             try
             {
@@ -94,7 +91,7 @@ namespace GradeBookTests
                     method.Invoke(gradeBook, null);
                     output = consolestream.ToString().ToLower();
 
-                    Assert.True(output.Contains("average grade of all students is"), "`GradeBook.GradeBooks.RankedGradeBook.CalculateStastics` did not run the base `CalculateStatistics` when there was 5 or more students.");
+                    Assert.True(output.Contains("average grade of all students is"), "`GradeBook.GradeBooks.RankedGradeBook.CalculateStatistics` did not run the base `CalculateStatistics` when there was 5 or more students.");
                 }
             }
             finally
@@ -111,10 +108,7 @@ namespace GradeBookTests
         public void OverrideCalculateStudentStatisticsTest()
         {
             //Setup Test
-            var rankedGradeBook = (from assembly in AppDomain.CurrentDomain.GetAssemblies()
-                                   from type in assembly.GetTypes()
-                                   where type.FullName == "GradeBook.GradeBooks.RankedGradeBook"
-                                   select type).FirstOrDefault();
+            var rankedGradeBook = TestHelpers.GetUserType("GradeBook.GradeBooks.RankedGradeBook");
             Assert.True(rankedGradeBook != null, "GradeBook.GradeBooks.RankedGradeBook doesn't exist.");
 
             var ctor = rankedGradeBook.GetConstructors().FirstOrDefault();
@@ -141,7 +135,7 @@ namespace GradeBookTests
             gradeBook.GetType().GetProperty("Students").SetValue(gradeBook, students);
 
             var output = string.Empty;
-            Console.Clear();
+
             try
             {
                 //Test that message was written to console when there are less than 5 students.
@@ -154,7 +148,7 @@ namespace GradeBookTests
                     Assert.True(output.Contains("5 students") || output.Contains("five students"), "`GradeBook.GradeBooks.RankedGradeBook.CalculateStudentStatistics` didn't respond with 'Ranked grading requires at least 5 students.' when there were less than 5 students.");
 
                     //Test that the base calculate statistics didn't still run when there were less than 5 students.
-                    Assert.True(!output.Contains("grades:"), "`GradeBook.GradeBooks.RankedGradeBook.CalculateStudentStastics` still ran the base `CalculateStudentStatistics` when there was less than 5 students.");
+                    Assert.True(!output.Contains("grades:"), "`GradeBook.GradeBooks.RankedGradeBook.CalculateStudentStatistics` still ran the base `CalculateStudentStatistics` when there was less than 5 students.");
                 }
             }
             finally
@@ -191,7 +185,6 @@ namespace GradeBookTests
 
             //Test that the base calculate statistics did run when there were 5 or more students.
             output = string.Empty;
-            Console.Clear();
 
             try
             {
@@ -201,7 +194,7 @@ namespace GradeBookTests
                     method.Invoke(gradeBook, new object[] { "jamie" });
                     output = consolestream.ToString().ToLower();
 
-                    Assert.True(output.Contains("grades:"), "`GradeBook.GradeBooks.RankedGradeBook.CalculateStudentStastics` did not run the base `CalculateStudentStatistics` when there was 5 or more students.");
+                    Assert.True(output.Contains("grades:"), "`GradeBook.GradeBooks.RankedGradeBook.CalculateStudentStatistics` did not run the base `CalculateStudentStatistics` when there was 5 or more students.");
                 }
             }
             finally

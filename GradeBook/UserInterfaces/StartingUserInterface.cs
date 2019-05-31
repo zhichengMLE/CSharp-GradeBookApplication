@@ -1,4 +1,4 @@
-﻿using GradeBook.GradeBooks;
+using GradeBook.GradeBooks;
 using System;
 
 namespace GradeBook.UserInterfaces
@@ -10,7 +10,8 @@ namespace GradeBook.UserInterfaces
         {
             while (!Quit)
             {
-                Console.WriteLine("What would you like to do?");
+                Console.WriteLine(string.Empty);
+                Console.WriteLine(">> What would you like to do?");
                 var command = Console.ReadLine().ToLower();
                 CommandRoute(command);
             }
@@ -40,6 +41,7 @@ namespace GradeBook.UserInterfaces
             }
             var name = parts[1];
             var type = parts[2];
+
             var weighted = false;
             if (parts[3] == "true")
                 weighted = true;
@@ -51,7 +53,7 @@ namespace GradeBook.UserInterfaces
                 gradeBook = new RankedGradeBook(name, weighted);
             else
             {
-                Console.WriteLine("{0} is not a supported type of gradebook, please try again",type);
+                Console.WriteLine("{0} is not a supported type of gradebook, please try again", type);
                 return;
             }
 
@@ -78,6 +80,7 @@ namespace GradeBook.UserInterfaces
 
         public static void HelpCommand()
         {
+            Console.WriteLine();
             Console.WriteLine("GradeBook accepts the following commands:");
             Console.WriteLine();
             Console.WriteLine("Create 'Name' 'Type' 'Weighted' - Creates a new gradebook where 'Name' is the name of the gradebook, 'Type' is what type of grading it should use, and 'Weighted' is whether or not grades should be weighted (true or false).");

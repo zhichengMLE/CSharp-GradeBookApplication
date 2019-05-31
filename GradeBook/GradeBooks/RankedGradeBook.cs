@@ -1,5 +1,6 @@
-﻿using System;
+using System;
 using System.Linq;
+
 namespace GradeBook.GradeBooks
 {
     public class RankedGradeBook : BaseGradeBook
@@ -16,10 +17,10 @@ namespace GradeBook.GradeBooks
                 throw new InvalidOperationException("You must have at least 5 students to do ranked grading.");
             }
 
-            var threshold = (int)Math.Ceiling(Students.Count*0.2);
+            var threshold = (int)Math.Ceiling(Students.Count * 0.2);
             var grades = Students.OrderByDescending(e => e.AverageGrade).Select(e => e.AverageGrade).ToList();
 
-            if(averageGrade >= grades[threshold-1])
+            if (averageGrade >= grades[threshold - 1])
                 return 'A';
             if (averageGrade >= grades[(threshold * 2) - 1])
                 return 'B';
@@ -32,7 +33,7 @@ namespace GradeBook.GradeBooks
 
         public override void CalculateStatistics()
         {
-            if(Students.Count() < 5)
+            if (Students.Count() < 5)
             {
                 Console.WriteLine("Ranked grading requires at least 5 students.");
                 return;
