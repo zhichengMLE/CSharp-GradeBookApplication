@@ -26,10 +26,8 @@ namespace GradeBookTests
         public void RefactorGradeBooksAndStartingUserInterface()
         {
             // Get the StandardGradeBook type
-            var standardGradeBook = (from assembly in AppDomain.CurrentDomain.GetAssemblies()
-                                     from type in assembly.GetTypes()
-                                     where type.Name == "StandardGradeBook"
-                                     select type).FirstOrDefault();
+            var standardGradeBook = TestHelpers.GetUserType("GradeBook.GradeBooks.StandardGradeBook");
+            Assert.True(standardGradeBook != null, "`StandardGradeBook` wasn't found in the `GradeBooks.GradeBook` namespace.");
 
             // Get the StandardGradeBook's constructor
             var constructor = standardGradeBook.GetConstructors().FirstOrDefault();
@@ -51,10 +49,8 @@ namespace GradeBookTests
         public void SetIsWeightedInBaseGradeBookConstructorTest()
         {
             // get standardgradebook type
-            var standardGradeBook = (from assembly in AppDomain.CurrentDomain.GetAssemblies()
-                                     from type in assembly.GetTypes()
-                                     where type.Name == "StandardGradeBook"
-                                     select type).FirstOrDefault();
+            var standardGradeBook = TestHelpers.GetUserType("GradeBook.GradeBooks.StandardGradeBook");
+            Assert.True(standardGradeBook != null, "`StandardGradeBook` wasn't found in the `GradeBooks.GradeBook` namespace.");
 
             // Instantiate StandardGradeBook with weighted grading
             object gradeBook = Activator.CreateInstance(standardGradeBook, "WeightedTest", true);
@@ -71,7 +67,6 @@ namespace GradeBookTests
         {
             //Setup Test
             var output = string.Empty;
-            Console.Clear();
 
             try
             {
@@ -104,7 +99,7 @@ namespace GradeBookTests
             }
 
             output = string.Empty;
-            Console.Clear();
+
             try
             {
                 using (var consoleInputStream = new StringReader("close"))

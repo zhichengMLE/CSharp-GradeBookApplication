@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Linq;
 using GradeBook.GradeBooks;
 using Xunit;
 
@@ -27,10 +26,7 @@ namespace GradeBookTests
             Assert.True(File.Exists(filePath), "`GradeBookType.cs` was not found in the `Enums` directory.");
 
             // Get GradeBookType from the GradeBook.Enums namespace
-            var gradebookEnum = (from assembly in AppDomain.CurrentDomain.GetAssemblies()
-                                 from type in assembly.GetTypes()
-                                 where type.FullName == "GradeBook.Enums.GradeBookType"
-                                 select type).FirstOrDefault();
+            var gradebookEnum = TestHelpers.GetUserType("GradeBook.Enums.GradeBookType");
 
             // Assert GradeBookType was found in the GradeBook.Enums namespace
             Assert.True(gradebookEnum != null, "`GradeBookType` wasn't found in the `GradeBooks.Enums` namespace.");
@@ -70,10 +66,7 @@ namespace GradeBookTests
             Assert.True(typeProperty != null, "`GradeBook.GradeBooks.BaseGradeBook` doesn't contain a property `Type` or `Type` is not `public`.");
 
             // Get GradeBookType Enum from GradeBook.Enums namespace
-            var gradebookEnum = (from assembly in AppDomain.CurrentDomain.GetAssemblies()
-                                 from type in assembly.GetTypes()
-                                 where type.FullName == "GradeBook.Enums.GradeBookType"
-                                 select type).FirstOrDefault();
+            var gradebookEnum = TestHelpers.GetUserType("GradeBook.Enums.GradeBookType");
 
             // Test that the property Type is of type GradeBookType
             Assert.True(typeProperty.PropertyType == gradebookEnum, "`GradeBook.GradeBooks.BaseGradeBook` contains a property `Type` but it is not of type `GradeBookType`.");

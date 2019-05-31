@@ -15,10 +15,8 @@ namespace GradeBookTests
         public void IncreasePartsCheckToThreeTest()
         {
             //Bypass Test if Create Command for Weighted GPA has been started
-            var rankedGradeBook = (from assembly in AppDomain.CurrentDomain.GetAssemblies()
-                                   from type in assembly.GetTypes()
-                                   where type.FullName == "GradeBook.GradeBooks.RankedGradeBook"
-                                   select type).FirstOrDefault();
+            var rankedGradeBook = TestHelpers.GetUserType("GradeBook.GradeBooks.RankedGradeBook");
+            Assert.True(rankedGradeBook != null, "`RankedGradeBook` wasn't found in the `GradeBooks.GradeBook` namespace.");
 
             var ctor = rankedGradeBook.GetConstructors().FirstOrDefault();
 
@@ -61,10 +59,8 @@ namespace GradeBookTests
         public void UpdateValidationMessageTest()
         {
             //Bypass Test if Create Command for Weighted GPA has been started
-            var rankedGradeBook = (from assembly in AppDomain.CurrentDomain.GetAssemblies()
-                                   from type in assembly.GetTypes()
-                                   where type.FullName == "GradeBook.GradeBooks.RankedGradeBook"
-                                   select type).FirstOrDefault();
+            var rankedGradeBook = TestHelpers.GetUserType("GradeBook.GradeBooks.RankedGradeBook");
+            Assert.True(rankedGradeBook != null, "`RankedGradeBook` wasn't found in the `GradeBooks.GradeBook` namespace.");
 
             var ctor = rankedGradeBook.GetConstructors().FirstOrDefault();
 
@@ -107,10 +103,8 @@ namespace GradeBookTests
         public void InstantiateGradeBookTest()
         {
             //Bypass Test if Create Command for Weighted GPA has been started
-            var rankedGradeBook = (from assembly in AppDomain.CurrentDomain.GetAssemblies()
-                                   from type in assembly.GetTypes()
-                                   where type.FullName == "GradeBook.GradeBooks.RankedGradeBook"
-                                   select type).FirstOrDefault();
+            var rankedGradeBook = TestHelpers.GetUserType("GradeBook.GradeBooks.RankedGradeBook");
+            Assert.True(rankedGradeBook != null, "`RankedGradeBook` wasn't found in the `GradeBooks.GradeBook` namespace.");
 
             var ctor = rankedGradeBook.GetConstructors().FirstOrDefault();
 
@@ -205,12 +199,13 @@ namespace GradeBookTests
         {
             //Setup Test
             var output = string.Empty;
-            Console.Clear();
+
             try
             {
                 using (var consoleInputStream = new StringReader("close"))
                 {
                     Console.SetIn(consoleInputStream);
+
                     using (var consolestream = new StringWriter())
                     {
                         Console.SetOut(consolestream);
