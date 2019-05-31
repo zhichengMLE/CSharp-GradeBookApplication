@@ -15,10 +15,7 @@ namespace GradeBookTests
         [Fact(DisplayName = "Update BaseGradeBooks GetGPA Method Test @update-basegradebook-s-getgpa-method")]
         public void GetWeightedGPATest()
         {
-            var standardGradeBook = (from assembly in AppDomain.CurrentDomain.GetAssemblies()
-                                     from type in assembly.GetTypes()
-                                     where type.Name == "StandardGradeBook"
-                                     select type).FirstOrDefault();
+            var standardGradeBook = TestHelpers.GetUserType("GradeBook.GradeBooks.StandardGradeBook");
             Assert.True(standardGradeBook != null, "`GradeBook.GradeBooks.StandardGradeBook` doesn't exist.");
 
             // Test if `StandardGradeBook` is `public`.
