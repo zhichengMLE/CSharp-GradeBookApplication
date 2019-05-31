@@ -18,10 +18,8 @@ namespace GradeBookTests
         public void OverrideCalculateStatisticsTest()
         {
             //Setup Test
-            var rankedGradeBook = (from assembly in AppDomain.CurrentDomain.GetAssemblies()
-                                   from type in assembly.GetTypes()
-                                   where type.FullName == "GradeBook.GradeBooks.RankedGradeBook"
-                                   select type).FirstOrDefault();
+            var rankedGradeBook = TestHelpers.GetUserType("GradeBook.GradeBooks.RankedGradeBook");
+            Assert.True(rankedGradeBook != null, "`RankedGradeBook` wasn't found in the `GradeBooks.GradeBook` namespace.");
 
             var ctor = rankedGradeBook.GetConstructors().FirstOrDefault();
 
@@ -34,7 +32,7 @@ namespace GradeBookTests
 
             MethodInfo method = rankedGradeBook.GetMethod("CalculateStatistics");
             var output = string.Empty;
-            Console.Clear();
+
             try
             {
                 //Test that message was written to console when there are less than 5 students.
@@ -84,7 +82,6 @@ namespace GradeBookTests
 
             //Test that the base calculate statistics did run when there were 5 or more students.
             output = string.Empty;
-            Console.Clear();
 
             try
             {
@@ -111,10 +108,7 @@ namespace GradeBookTests
         public void OverrideCalculateStudentStatisticsTest()
         {
             //Setup Test
-            var rankedGradeBook = (from assembly in AppDomain.CurrentDomain.GetAssemblies()
-                                   from type in assembly.GetTypes()
-                                   where type.FullName == "GradeBook.GradeBooks.RankedGradeBook"
-                                   select type).FirstOrDefault();
+            var rankedGradeBook = TestHelpers.GetUserType("GradeBook.GradeBooks.RankedGradeBook");
             Assert.True(rankedGradeBook != null, "GradeBook.GradeBooks.RankedGradeBook doesn't exist.");
 
             var ctor = rankedGradeBook.GetConstructors().FirstOrDefault();
@@ -141,7 +135,7 @@ namespace GradeBookTests
             gradeBook.GetType().GetProperty("Students").SetValue(gradeBook, students);
 
             var output = string.Empty;
-            Console.Clear();
+
             try
             {
                 //Test that message was written to console when there are less than 5 students.
@@ -191,7 +185,6 @@ namespace GradeBookTests
 
             //Test that the base calculate statistics did run when there were 5 or more students.
             output = string.Empty;
-            Console.Clear();
 
             try
             {
