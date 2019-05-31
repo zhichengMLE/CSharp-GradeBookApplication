@@ -15,7 +15,7 @@ namespace GradeBookTests
         {
             //Setup Test
             var output = string.Empty;
-            Console.Clear();
+
             try
             {
                 using (var consoleInputStream = new StringReader("close"))
