@@ -1,11 +1,9 @@
 ﻿namespace GradeBook.Enums
 {
-    public enum GradeBookType
+    public enum StudentType
     {
         Standard,
-        Ranked,
-        ESNU,
-        OneToFour,
-        SixPoint
+        Honors,
+        DualEnrolled
     }
 }
