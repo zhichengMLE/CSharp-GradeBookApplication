@@ -28,15 +28,15 @@ namespace GradeBook.GradeBooks
 
             grades.Sort();
 
-            if(averageGrade >= grades[threshold-1])
+            if(averageGrade <= grades[threshold-1])
             {
                 return 'A';
             }
-            else if(averageGrade >= grades[threshold*2-1])
+            else if(averageGrade <= grades[threshold*2-1])
             {
                 return 'B';
             }
-            else if(averageGrade >= grades[threshold*3-1])
+            else if(averageGrade <= grades[threshold*3-1])
             {
                 return 'C';
             }
