@@ -26,9 +26,10 @@ namespace GradeBook.GradeBooks
                 grades.Add(student.AverageGrade);
             }
 
-            grades.Sort().Reverse();
+            grades.Sort();
+            grades.Reverse();
 
-            if(averageGrade >= grades[threshold-1])
+            if (averageGrade >= grades[threshold-1])
             {
                 return 'A';
             }
@@ -40,12 +41,13 @@ namespace GradeBook.GradeBooks
             {
                 return 'C';
             }
-            else
+            else if (averageGrade >= grades[threshold * 4 - 1])
             {
                 return 'D';
             }
+            
 
-            return 'R';
+            return 'F';
         }
     }
 }
