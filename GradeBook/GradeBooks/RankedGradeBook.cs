@@ -26,7 +26,7 @@ namespace GradeBook.GradeBooks
                 grades.Add(student.AverageGrade);
             }
 
-            grades.Sort(-1);
+            grades.Sort().Reverse();
 
             if(averageGrade >= grades[threshold-1])
             {
